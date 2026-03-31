@@ -8,13 +8,13 @@ export const CATEGORIES: Category[] = [
 
 {
     id: "smart-lighting",
-    label: "Smart Lighting",
+    name: "Smart Lighting",
     description: "Bulbs, strips & ambient lighting.",
     image: "products/smart lighting.png"
   },
   {
     id: "smart-switches-dimmers",
-    label: "Smart Switches & Dimmers",
+    name: "Smart Switches & Dimmers",
     description: "Wall switches, dimmers & scenes.",
     image: "products/smart switches.png"
   },
