@@ -6,8 +6,11 @@ export default function AboutUsSection() {
   const { badge, titleMain, titleSub, image, features, ctaText } = aboutContent;
 
   return (
-    <section className="min-h-dvh py-24 lg:py-32 bg-gradient-to-br from-slate-50 via-white to-orange-50/50 overflow-hidden">
-      <div className="layout-container max-w-7xl px-6 lg:px-12 xl:px-16 mx-auto">
+    <section className="min-h-dvh py-24 lg:py-32 bg-gradient-to-br from-white via-white to-orange-100/40 overflow-hidden relative">
+      {/* Optional: Add a subtle ambient glow blob for a more premium look */}
+      <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-orange-200/20 blur-[120px] rounded-full pointer-events-none" />
+      
+      <div className="layout-container max-w-7xl px-6 lg:px-12 xl:px-16 mx-auto relative z-10">
         
         {/* Header */}
         <div className="text-center mb-24 lg:mb-32 max-w-4xl mx-auto">
@@ -16,7 +19,7 @@ export default function AboutUsSection() {
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black bg-gradient-to-r from-slate-900 to-slate-800 bg-clip-text text-transparent leading-tight">
             {titleMain}<br className="hidden lg:inline" />
-            <span className="bg-gradient-to-r from-[#FF8A4C] to-amber-500 bg-clip-text text-transparent italic">{titleSub}</span>
+            <span className="bg-gradient-to-r from-[#FF8A4C] to-amber-500 bg-clip-text text-transparent italic ml-2">{titleSub}</span>
           </h2>
         </div>
 
@@ -27,11 +30,10 @@ export default function AboutUsSection() {
           <div className="relative mx-auto w-72 h-72 lg:w-[22rem] lg:h-[22rem] xl:w-96 xl:h-96 rounded-full shadow-2xl ring-4 ring-white z-20 group">
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-400/30 via-[#FF8A4C]/30 to-amber-500/30 -inset-2 blur-xl animate-spin-slow opacity-70" />
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-400 via-[#FF8A4C] to-amber-500 p-[3px]" />
-            <div className="absolute inset-0 bg-white/95 rounded-full shadow-2xl" />
+            <div className="absolute inset-0 bg-white rounded-full shadow-2xl" />
             <Image
               src={image}
               alt="Cogni innovation"
-              unoptimized={true}
               fill
               className="object-cover rounded-full shadow-2xl group-hover:scale-105 transition-transform duration-700"
               priority
@@ -79,7 +81,7 @@ export default function AboutUsSection() {
 function AboutCard({ data, className, align }) {
   return (
     <div className={`w-64 lg:w-80 max-w-xs ${align === 'left' ? 'text-left' : 'text-right'} z-10 ${className}`}>
-      <div className="bg-white/90 backdrop-blur-xl rounded-2xl p-8 shadow-2xl border border-white/50 ring-1 ring-orange-100/50 hover:scale-105 transition-all duration-500">
+      <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-8 shadow-2xl border border-white ring-1 ring-orange-100/50 hover:scale-105 transition-all duration-500">
         <div className={`w-14 h-14 bg-gradient-to-br ${data.gradient} rounded-xl flex items-center justify-center mb-6 shadow-xl shadow-orange-500/20 mx-auto`}>
           <Icon type={data.icon} />
         </div>

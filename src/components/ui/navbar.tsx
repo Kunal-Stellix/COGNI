@@ -37,6 +37,7 @@ export default function Navbar() {
                   src="/images/cogni-logo.png" 
                   alt="Cogni Logo" 
                   fill
+                  
                   className="object-contain object-left drop-shadow-md" 
                   priority
                   sizes="(max-width: 768px) 128px, 256px"

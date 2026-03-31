@@ -11,7 +11,8 @@ export const useNavbarLogic = () => {
   const navLinks = [
     { name: 'Products', href: 'products' },
     { name: 'Solutions', href: '#solutions' },
-    { name: 'About Us', href: '#about' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Support', href: '#support' },
   ];
 
