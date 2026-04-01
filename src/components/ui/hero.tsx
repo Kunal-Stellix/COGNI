@@ -13,7 +13,7 @@ export default function HeroSection() {
         src={videoSrc}
         autoPlay
         loop
-        priority="true"
+        //priority="true"
         muted
         playsInline
         preload="metadata"

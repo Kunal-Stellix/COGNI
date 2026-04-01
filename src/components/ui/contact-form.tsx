@@ -68,22 +68,36 @@ export default function ContactUsSection() {
 
 /* --- Internal UI Components --- */
 
-function SuccessMessage({ onReset }) {
+interface SuccessMessageProps {
+  onReset: () => void;
+}
+
+function SuccessMessage({ onReset }: SuccessMessageProps) {
   return (
     <div className="text-center py-12 animate-in fade-in zoom-in duration-500">
-       <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white shadow-lg shadow-green-200">
+      <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white shadow-lg shadow-green-200">
         <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
         </svg>
-       </div>
-       <h3 className="text-3xl font-bold text-slate-900">Message Sent!</h3>
-       <p className="text-slate-500 mt-2 font-medium">We'll get back to you shortly.</p>
-       <button onClick={onReset} className="mt-8 text-[#FF8A4C] font-bold text-sm underline underline-offset-4">Send another</button>
+      </div>
+      <h3 className="text-3xl font-bold text-slate-900">Message Sent!</h3>
+      <p className="text-slate-500 mt-2 font-medium">We'll get back to you shortly.</p>
+      <button 
+        onClick={onReset} 
+        className="mt-8 text-[#FF8A4C] font-bold text-sm underline underline-offset-4"
+      >
+        Send another
+      </button>
     </div>
   );
 }
 
-function ContactForm({ onSubmit, isSubmitting }) {
+interface ContactFormProps {
+  onSubmit: (e: React.FormEvent) => void;
+  isSubmitting: boolean;
+}
+
+function ContactForm({ onSubmit, isSubmitting }: ContactFormProps) {
   return (
     <form onSubmit={onSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div className="space-y-6">
