@@ -3,9 +3,9 @@
 import { useRef } from 'react';
 
 export const useCategoryScroll = () => {
-  const scrollRef = useRef(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const scroll = (direction) => {
+  const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
       const { clientWidth } = scrollRef.current;
       // Scroll by 80% of the visible width

@@ -13,7 +13,7 @@ export const useNavbarLogic = () => {
     { name: 'Solutions', href: '#solutions' },
     { name: 'About Us', href: '/about' },
     { name: 'Blog', href: '/blog' },
-    { name: 'Support', href: '#support' },
+    { name: 'Docs', href: 'https://docs.cogniliving.com/' },
   ];
 
   useEffect(() => {
