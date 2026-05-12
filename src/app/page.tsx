@@ -1,10 +1,9 @@
-import Navbar from '@/components/ui/navbar';
-import HeroSection from '@/components/ui/hero';
-import ProductsSection from '@/components/ProductsSection';
-import ShopBySection from '@/components/ui/ShopBy';
-import AboutSection from '@/components/ui/about';
-import ContactUsSection from '@/components/ui/contact-form';
-import Footer from '@/components/ui/Footer';
+import Navbar from '@/components/layout/Navbar';
+import HeroSection from '@/components/sections/HeroSection';
+import ProductsSection from '@/components/sections/ProductsSection';
+import ShopBySection from '@/components/sections/ShopBySection';
+import AboutSection from '@/components/sections/AboutSection';
+import ContactSection from '@/components/sections/ContactSection';
 
 export default function Home() {
   return (
@@ -14,8 +13,7 @@ export default function Home() {
       <ProductsSection />
       <ShopBySection />
       <AboutSection />
-      <ContactUsSection />
-      <Footer />
+      <ContactSection />
     </main>
   );
 }

@@ -1,8 +1,8 @@
 // app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/ui/navbar";
-import Footer from "@/components/ui/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "Smart Home Landing",
@@ -19,6 +19,7 @@ export default function RootLayout({
       <body className="bg-slate-950 text-white antialiased">
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>   
   );

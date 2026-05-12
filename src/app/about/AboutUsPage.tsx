@@ -13,19 +13,19 @@ const teamMembers = [
     name: "ABC",
     role: "Co-Founder",
     quote: "Morning Solitude is my favorite scene.",
-    image: "/images/team1.jpg",
+    image: "/images/team1.png",
   },
   {
     name: "DEF",
     role: "Lead Engineer",
     quote: "I love the Movie Night ambiance.",
-    image: "/images/team2.jpg",
+    image: "/images/team2.png",
   },
   {
     name: "GHI",
     role: "UX Architect",
     quote: "Welcome Home brings a smile to my face.",
-    image: "/images/team3.jpg",
+    image: "/images/team3.png",
   },
 ];
 
@@ -34,25 +34,21 @@ const blueprintItems = [
     time: "7:00 AM",
     label: "Morning",
     desc: "Blinds rise, coffee brews, lights mimic the dawn.",
-    icon: "☀️",
   },
   {
     time: "12:00 PM",
     label: "Afternoon",
     desc: "Climate and lighting optimize for focus.",
-    icon: "⚡",
   },
   {
     time: "6:00 PM",
     label: "Evening",
     desc: "Ambiance sets as you cross the threshold.",
-    icon: "🌆",
   },
   {
     time: "10:00 PM",
     label: "Night",
     desc: "Security arms and lights dim for rest.",
-    icon: "🌙",
   },
 ];
 
@@ -233,7 +229,7 @@ export default function AboutUs() {
             style={{ transformStyle: "preserve-3d" }}
           >
             <Image
-              src="/images/philosophy.jpg"
+              src="/images/philosophy.png"
               alt="Family Connection"
               fill
               className="object-cover"
@@ -273,10 +269,6 @@ export default function AboutUs() {
                 key={idx}
                 className={`blueprint-card reveal-up stagger-${idx + 1} p-10 border-r border-b border-slate-800 last:border-r-0 group`}
               >
-                {/* 3D rotating icon on hover */}
-                <div className="card-icon text-3xl mb-4 inline-block" style={{ transformStyle: "preserve-3d" }}>
-                  {item.icon}
-                </div>
                 <span className="text-[#FF8A4C] font-mono text-sm mb-2 block">
                   {item.time}
                 </span>

@@ -1,26 +1,27 @@
+"use client";
+
 import React from 'react';
-import { heroContent } from '../HeroSection';
+import { HERO_CONTENT } from '@/data/constants';
 
 export default function HeroSection() {
-  const { videoSrc, headline, brandName, subheadline, buttons } = heroContent;
+  const { videoSrc, headline, brandName, subheadline, buttons } = HERO_CONTENT;
 
   return (
     <section className="relative flex h-[100vh] min-h-[650px] w-full overflow-hidden">
       
       {/* 1. Background Video */}
       <video
-        className="absolute inset-0 h-185 w-full object-cover brightness-70"
+        className="absolute inset-0 h-full w-full object-cover brightness-70"
         src={videoSrc}
         autoPlay
         loop
-        //priority="true"
         muted
         playsInline
         preload="metadata"
       />
 
       {/* 2. Left Side Content */}
-      <div className="layout-container relative z-20 flex w-full max-w-7xl items-center px-8 py-16 lg:px-12 xl:px-16">
+      <div className="relative z-20 flex w-full max-w-7xl items-center px-8 py-16 lg:px-12 xl:px-16 mx-auto">
         <div className="w-full max-w-xl space-y-6 lg:max-w-lg lg:space-y-8">
           
           {/* Headline */}

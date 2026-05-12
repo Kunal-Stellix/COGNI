@@ -8,22 +8,11 @@ export const useNavbarLogic = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navLinks = [
-    { name: 'Products', href: 'products' },
-    { name: 'Solutions', href: '#solutions' },
-    { name: 'About Us', href: '/about' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Docs', href: 'https://docs.cogniliving.com/' },
-  ];
-
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
-      // 1. Handle scroll state for padding adjustments
       setIsScrolled(currentScrollY > 20);
 
-      // 2. Handle Hide/Show based on scroll direction
       if (currentScrollY > lastScrollY && currentScrollY > 300) {
         setIsVisible(false);
         setMobileMenuOpen(false); 
@@ -44,7 +33,6 @@ export const useNavbarLogic = () => {
     isScrolled,
     isVisible,
     mobileMenuOpen,
-    navLinks,
     toggleMobileMenu
   };
 };

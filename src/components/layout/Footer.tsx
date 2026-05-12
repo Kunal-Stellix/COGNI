@@ -3,11 +3,10 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { footerData } from '../FooterSection';
+import { FOOTER_DATA, SITE_NAME } from '@/data/constants';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const brandName = "Cogni";
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -24,7 +23,7 @@ export default function Footer() {
             <p className="text-slate-400">Get a free consultation with our smart home engineers.</p>
           </div>
           <Link 
-            href="/contact" 
+            href="/#contact" 
             className="px-8 py-4 bg-[#FF8A4C] hover:bg-[#FF7A33] text-white font-bold rounded-xl transition-all shadow-lg shadow-orange-500/20 whitespace-nowrap active:scale-95"
           >
             Get a Quote →
@@ -38,28 +37,24 @@ export default function Footer() {
           
           {/* Brand Column */}
           <div className="md:col-span-4 flex flex-col items-start">
-            
-            {/* SEPARATE LOGO CONTAINER */}
-            {/* We use a fixed height container so the logo can be large without pushing text */}
             <div className="relative w-full h-16 mb-4"> 
               <Link href="/" className="absolute center top-1/2 -translate-y-1/2 block">
-                <div className="relative h-20 w-48 md:h-34 md:w-56 transition-transform hover:scale-105">
+                <div className="relative h-28 w-72 md:w-80 transition-transform hover:scale-105">
                   <Image 
                     src="/images/cogni-logo.png" 
-                    alt="Cogni" 
+                    alt={SITE_NAME} 
                     fill
-                    className="object-contain object-center"
+                    className="object-contain object-left"
                     priority
-                    sizes="300px"
                   />
                 </div>
               </Link>
             </div>
 
             <p className="text-slate-500 leading-relaxed max-w-xs text-sm font-medium mb-8">
-              {footerData?.brandDescription || "Transforming living spaces with intelligent automation and seamless connectivity."}
+              {FOOTER_DATA.brandDescription}
             </p>
-            {/* Social Icons Placeholder */}
+            
             <div className="flex items-center gap-4">
                <SocialIcon type="linkedin" />
                <SocialIcon type="instagram" />
@@ -69,16 +64,16 @@ export default function Footer() {
 
           {/* Links Columns */}
           <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-10">
-            <FooterColumn title="Solutions" links={footerData?.solutions} />
-            <FooterColumn title="Company" links={footerData?.company} />
+            <FooterColumn title="Solutions" links={FOOTER_DATA.solutions} />
+            <FooterColumn title="Company" links={FOOTER_DATA.company} />
             <div className="space-y-6">
               <h4 className="text-xs font-bold text-slate-900 uppercase tracking-widest">Contact</h4>
               <ul className="space-y-4">
                 <li className="text-sm text-slate-600 font-medium leading-relaxed whitespace-pre-line">
-                  {footerData?.contact?.address}
+                  {FOOTER_DATA.contact.address}
                 </li>
-                <li><a href={`mailto:${footerData?.contact?.email}`} className="text-sm text-slate-900 font-bold hover:text-[#FF8A4C] transition-colors">{footerData?.contact?.email}</a></li>
-                <li><a href={`tel:${footerData?.contact?.phone?.replace(/\s/g, '')}`} className="text-sm text-slate-900 font-bold hover:text-[#FF8A4C] transition-colors">{footerData?.contact?.phone}</a></li>
+                <li><a href={`mailto:${FOOTER_DATA.contact.email}`} className="text-sm text-slate-900 font-bold hover:text-[#FF8A4C] transition-colors">{FOOTER_DATA.contact.email}</a></li>
+                <li><a href={`tel:${FOOTER_DATA.contact.phone.replace(/\s/g, '')}`} className="text-sm text-slate-900 font-bold hover:text-[#FF8A4C] transition-colors">{FOOTER_DATA.contact.phone}</a></li>
               </ul>
             </div>
           </div>
@@ -86,9 +81,9 @@ export default function Footer() {
       </div>
 
       {/* 3. COPYRIGHT BAR */}
-      <div className="mt-16 pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-4 bg-white relative z-20 px-6 lg:px-12">
+      <div className="mt-16 pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-4 bg-white relative z-20 px-6 lg:px-12 pb-8">
         <p className="text-sm text-slate-500 font-medium">
-          © {currentYear} Cogni Smart Solutions. All rights reserved.
+          © {currentYear} {SITE_NAME} Smart Solutions. All rights reserved.
         </p>
         <div className="flex items-center gap-6">
           <Link href="#" className="text-sm text-slate-500 hover:text-slate-900 font-medium transition-colors">Privacy Policy</Link>
@@ -101,21 +96,21 @@ export default function Footer() {
         className="bg-gradient-to-b from-slate-200 via-slate-100 to-transparent bg-clip-text text-transparent leading-none absolute left-1/2 -translate-x-1/2 bottom-8 font-black tracking-tighter pointer-events-none select-none text-center px-4 z-0 w-full"
         style={{ fontSize: 'clamp(4rem, 18vw, 15rem)' }}
       >
-        {brandName.toUpperCase()}
+        {SITE_NAME.toUpperCase()}
       </div>
 
       {/* 5. SCROLL TO TOP BUTTON */}
       <button
         onClick={scrollToTop}
-        className="group absolute hover:border-slate-300 duration-500 shadow-[0_0px_30px_rgba(0,0,0,0.05)] bottom-16 md:bottom-20 backdrop-blur-md rounded-[2rem] bg-white/60 left-1/2 border border-slate-200 flex items-center justify-center p-2.5 -translate-x-1/2 z-30 transition-all hover:-translate-y-2"
+        className="group absolute hover:border-slate-300 duration-500 shadow-[0_0px_30px_rgba(0,0,0,0.05)] bottom-24 md:bottom-28 backdrop-blur-md rounded-[2rem] bg-white/60 left-1/2 border border-slate-200 flex items-center justify-center p-2.5 -translate-x-1/2 z-30 transition-all hover:-translate-y-2"
       >
         <div className="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 bg-gradient-to-br from-slate-900 to-slate-800 rounded-[1.5rem] flex items-center justify-center shadow-lg transition-all duration-500 group-hover:from-[#FF8A4C] group-hover:to-[#FF6B1A]">
-          <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 group-hover:scale-110 transition-transform">
+          <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 group-hover:scale-110 transition-transform">
             <Image
               src="/images/cogni-logo.png"
               alt="Top"
               fill
-              className="object-contain brightness-0 invert"
+              className="object-contain"
             />
           </div>
         </div>
@@ -126,17 +121,16 @@ export default function Footer() {
   );
 }
 
-/* Helper Components */
-function FooterColumn({ title, links }) {
+function FooterColumn({ title, links }: { title: string; links: { label: string; href: string }[] }) {
   if (!links) return null;
   return (
     <div className="space-y-6">
       <h4 className="text-xs font-bold text-slate-900 uppercase tracking-widest">{title}</h4>
       <ul className="space-y-4">
         {links.map((link) => (
-          <li key={link.name}>
+          <li key={link.label}>
             <Link href={link.href} className="text-sm text-slate-500 hover:text-[#FF8A4C] font-medium transition-colors">
-              {link.name}
+              {link.label}
             </Link>
           </li>
         ))}
@@ -145,7 +139,7 @@ function FooterColumn({ title, links }) {
   );
 }
 
-function SocialIcon({ type }) {
+function SocialIcon({ type }: { type: 'linkedin' | 'instagram' | 'twitter' }) {
    const icons = {
     linkedin: (
       <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">

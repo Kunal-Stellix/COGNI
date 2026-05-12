@@ -1,6 +1,20 @@
 import React from 'react';
+import Image from 'next/image';
 
-export const ProductCard = ({ product, isWide }) => {
+interface Product {
+  id: string;
+  name: string;
+  tagline: string;
+  image: string;
+  badge?: boolean;
+}
+
+interface ProductCardProps {
+  product: Product;
+  isWide?: boolean;
+}
+
+export const ProductCard: React.FC<ProductCardProps> = ({ product, isWide }) => {
   return (
     <article 
       className={`group relative flex overflow-hidden rounded-[2rem] bg-[#f7f7f7] transition-all duration-700 hover:shadow-2xl
@@ -9,10 +23,12 @@ export const ProductCard = ({ product, isWide }) => {
     >
       {/* 1. Full Cover Image Layer */}
       <div className="absolute inset-0 z-0">
-        <img 
+        <Image 
           src={product.image} 
           alt={product.name}
-          className="h-full w-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
         />
       </div>
 

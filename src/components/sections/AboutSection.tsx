@@ -1,16 +1,17 @@
+"use client";
+
 import React from 'react';
 import Image from 'next/image';
-import { aboutContent } from '../AboutSection';
+import { ABOUT_CONTENT } from '@/data/constants';
 
-export default function AboutUsSection() {
-  const { badge, titleMain, titleSub, image, features, ctaText } = aboutContent;
+export default function AboutSection() {
+  const { badge, titleMain, titleSub, image, features, ctaText } = ABOUT_CONTENT;
 
   return (
     <section className="min-h-dvh py-24 lg:py-32 bg-gradient-to-br from-white via-white to-orange-100/40 overflow-hidden relative">
-      {/* Optional: Add a subtle ambient glow blob for a more premium look */}
       <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-orange-200/20 blur-[120px] rounded-full pointer-events-none" />
       
-      <div className="layout-container max-w-7xl px-6 lg:px-12 xl:px-16 mx-auto relative z-10">
+      <div className="max-w-7xl px-6 lg:px-12 xl:px-16 mx-auto relative z-10">
         
         {/* Header */}
         <div className="text-center mb-24 lg:mb-32 max-w-4xl mx-auto">
@@ -24,7 +25,7 @@ export default function AboutUsSection() {
         </div>
 
         {/* ORBITAL LAYOUT */}
-        <div className="relative max-w-[52rem] mx-auto -mt-12 lg:-mt-20">
+        <div className="relative max-w-[52rem] mx-auto mt-12 lg:mt-0">
           
           {/* CENTRAL IMAGE */}
           <div className="relative mx-auto w-72 h-72 lg:w-[22rem] lg:h-[22rem] xl:w-96 xl:h-96 rounded-full shadow-2xl ring-4 ring-white z-20 group">
@@ -41,20 +42,40 @@ export default function AboutUsSection() {
             />
           </div>
 
-          {/* SIDE CARDS (Privacy & Control) */}
-          <AboutCard 
-            data={features[0]} 
-            className="absolute left-0 -ml-8 lg:-ml-12 xl:-ml-16 top-1/2 -translate-y-1/2 -rotate-6 hover:-rotate-3" 
-            align="left"
-          />
-          <AboutCard 
-            data={features[1]} 
-            className="absolute right-0 -mr-8 lg:-mr-12 xl:-mr-16 top-1/2 -translate-y-1/2 rotate-6 hover:rotate-3" 
-            align="right"
-          />
+          {/* SIDE CARDS (Desktop only or responsive flex) */}
+          <div className="hidden lg:block">
+            <AboutCard 
+              data={features[0]} 
+              className="absolute left-0 -ml-12 xl:-ml-16 top-1/2 -translate-y-1/2 -rotate-6 hover:-rotate-3" 
+              align="left"
+            />
+            <AboutCard 
+              data={features[1]} 
+              className="absolute right-0 -mr-12 xl:-mr-16 top-1/2 -translate-y-1/2 rotate-6 hover:rotate-3" 
+              align="right"
+            />
+          </div>
+
+          {/* Mobile Cards List */}
+          <div className="lg:hidden mt-12 space-y-6">
+             <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-8 shadow-xl border border-slate-100">
+                <div className={`w-12 h-12 bg-gradient-to-br ${features[0].gradient} rounded-xl flex items-center justify-center mb-4`}>
+                   <Icon type={features[0].icon} />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{features[0].title}</h3>
+                <p className="text-slate-600 text-sm">{features[0].description}</p>
+             </div>
+             <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-8 shadow-xl border border-slate-100">
+                <div className={`w-12 h-12 bg-gradient-to-br ${features[1].gradient} rounded-xl flex items-center justify-center mb-4`}>
+                   <Icon type={features[1].icon} />
+                </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{features[1].title}</h3>
+                <p className="text-slate-600 text-sm">{features[1].description}</p>
+             </div>
+          </div>
 
           {/* BOTTOM CARD (Reliability) */}
-          <div className="mt-32 lg:mt-40 text-center">
+          <div className="mt-12 lg:mt-40 text-center">
             <div className="inline-block bg-slate-900 rounded-[2.5rem] p-10 md:p-14 shadow-2xl border border-slate-800 max-w-2xl mx-auto hover:scale-105 transition-all duration-500 -rotate-1 hover:rotate-0 group">
               <div className={`w-16 h-16 ${features[2].gradient} rounded-2xl flex items-center justify-center mb-8 shadow-xl shadow-orange-500/30 mx-auto group-hover:rotate-12 transition-transform`}>
                  <Icon type={features[2].icon} />
@@ -77,12 +98,11 @@ export default function AboutUsSection() {
   );
 }
 
-/* Helper Components */
-function AboutCard({ data, className, align }) {
+function AboutCard({ data, className, align }: { data: any; className: string; align: 'left' | 'right' }) {
   return (
     <div className={`w-64 lg:w-80 max-w-xs ${align === 'left' ? 'text-left' : 'text-right'} z-10 ${className}`}>
       <div className="bg-white/95 backdrop-blur-xl rounded-2xl p-8 shadow-2xl border border-white ring-1 ring-orange-100/50 hover:scale-105 transition-all duration-500">
-        <div className={`w-14 h-14 bg-gradient-to-br ${data.gradient} rounded-xl flex items-center justify-center mb-6 shadow-xl shadow-orange-500/20 mx-auto`}>
+        <div className={`w-14 h-14 bg-gradient-to-br ${data.gradient} rounded-xl flex items-center justify-center mb-6 shadow-xl shadow-orange-500/20 ${align === 'left' ? 'mr-auto' : 'ml-auto'}`}>
           <Icon type={data.icon} />
         </div>
         <h3 className="text-xl lg:text-2xl font-black text-slate-900 mb-3">{data.title}</h3>
@@ -92,7 +112,7 @@ function AboutCard({ data, className, align }) {
   );
 }
 
-function Icon({ type }) {
+function Icon({ type }: { type: string }) {
   if (type === 'check') return (
     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />

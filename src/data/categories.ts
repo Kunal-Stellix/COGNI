@@ -73,4 +73,4 @@ export const CATEGORIES: Category[] = [
     description: "Cookers, coffee makers & more.",
     image: "products/smart kitchen.png"
   }
-];
+];

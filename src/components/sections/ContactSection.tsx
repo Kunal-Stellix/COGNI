@@ -1,9 +1,9 @@
 "use client";
 
 import React from 'react';
-import { useContactForm } from '../ContactUsSection';
+import { useContactForm } from '@/hooks/useContactForm';
 
-export default function ContactUsSection() {
+export default function ContactSection() {
   const { isSubmitting, isSuccess, handleSubmit, resetForm } = useContactForm();
 
   const contactInfo = [
@@ -13,7 +13,7 @@ export default function ContactUsSection() {
   ];
 
   return (
-    <section className="relative bg-slate-50 py-24 lg:py-32 overflow-hidden">
+    <section id="contact" className="relative bg-slate-50 py-24 lg:py-32 overflow-hidden">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full z-0 opacity-40 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-orange-200 rounded-full blur-[120px]" />
@@ -66,13 +66,7 @@ export default function ContactUsSection() {
   );
 }
 
-/* --- Internal UI Components --- */
-
-interface SuccessMessageProps {
-  onReset: () => void;
-}
-
-function SuccessMessage({ onReset }: SuccessMessageProps) {
+function SuccessMessage({ onReset }: { onReset: () => void }) {
   return (
     <div className="text-center py-12 animate-in fade-in zoom-in duration-500">
       <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white shadow-lg shadow-green-200">
@@ -92,12 +86,7 @@ function SuccessMessage({ onReset }: SuccessMessageProps) {
   );
 }
 
-interface ContactFormProps {
-  onSubmit: (e: React.FormEvent) => void;
-  isSubmitting: boolean;
-}
-
-function ContactForm({ onSubmit, isSubmitting }: ContactFormProps) {
+function ContactForm({ onSubmit, isSubmitting }: { onSubmit: (e: React.FormEvent) => void; isSubmitting: boolean }) {
   return (
     <form onSubmit={onSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div className="space-y-6">

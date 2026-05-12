@@ -11,7 +11,8 @@ const generateMockProducts = (categoryId: string) => {
   return Array.from({ length: 6 }).map((_, i) => ({
     id: `${categoryId}-prod-${i + 1}`,
     name: `Cogni ${categoryId.split('-')[0].toUpperCase()} 0${i + 1}`,
-    price: `$${(Math.random() * 200 + 49).toFixed(0)}`,
+    // Deterministic price based on the index: always the same on server & client
+    price: `$${100 + (i * 25)}`, 
     description: "Architectural grade hardware. Zero-latency processing.",
   }));
 };
